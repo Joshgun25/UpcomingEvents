@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Profile Page{% endblock %}
+{% block content %}
+
+<div class="speaker_img" style="margin-bottom: 600px;">
+    <img src="{{result['image']}}" alt="speaker name" >
+</div>
+<div style="margin-left: 700px; margin-top: -1400px;">
+    <h5 class="name" style="color: white; font-size: 22px;">{{ result['name']}}</h5>
+    <p class="type" style="color: white; font-size: 20px;">Tür:&emsp;&emsp;{{result['type_']}}</p><br>
+    <p style="color: white; font-size: 20px;">Tarih:&emsp;{{result['date']}}</p><br>
+    <p style="color: white; font-size: 20px;">Yer:&emsp;&emsp;{{result['city']}}/{{result['location']}}</p><br>
+    <div class="col-md-3 text-md-right text-center">
+        <a href="{{result['url']}}" class="btn btn-primary btn-rounded mt30" style="margin-left: 100px; font-size: 15px;">Bilet al</a>
+    </div>
+</div>
+<div>
+    <p style="color: white; font-size: 20px; padding-top: 500px;">Açıklama:&emsp;{{result['description']}}</p><br>
+</div>
+{% endblock content %}

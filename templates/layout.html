@@ -23,19 +23,19 @@
                     class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span></button>
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">Ana sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">İletişim</a></li>
                 </ul>
                 <div id="logging-button">
                     {% if session.get('logged_in') == None %}
                     <form class="form-inline my-2 my-lg-0">
                         <a href="{{ url_for('login.login_page') }}"
-                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">login</a>
+                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Giriş</a>
                     </form>
                     {% else %}
                     <form class="form-inline my-2 my-lg-0">
                         <a href="{{ url_for('login.logout_page') }}"
-                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">logout</a>
+                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Çıkış</a>
                     </form>
                     {% endif %}
                 </div>
@@ -90,8 +90,8 @@
 <!-- Footer -->
 <footer class="page-footer font-small blue pt-4">
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a href="{{url_for('home.home_page') }}"> Feridcim</a>
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="{{url_for('home.home_page') }}"> Upcoming Events Platform - ITUCSSWE19</a>
     </div>
     <!-- Copyright -->
 </footer>

@@ -4,30 +4,32 @@
 
 
 
-<div style="margin-left: 10px; margin-bottom: 10px;">
+<div style="margin-left: 10px; margin-bottom: 60px;">
 	<button onclick="filtering_all()" id="myBtn" class="btn btn-primary">Tümü</button>
 	<button onclick="filtering_senfoni()" id="myBtn" class="btn btn-primary">Senfoni</button>
 	<button onclick="filtering_sinema()" id="myBtn" class="btn btn-primary">Sinema</button>
 	<button onclick="filtering_tiyatro()" id="myBtn" class="btn btn-primary">Tiyatro</button>
-	<input type="text" id="myInput" onkeyup="search()" placeholder="Başlıklarda ara.." title="Type in a name" style="margin-left: 290px;">
+	<button onclick="filtering_klasik()" id="myBtn" class="btn btn-primary">Klasik</button>
+	<button onclick="filtering_konser()" id="myBtn" class="btn btn-primary">Konser</button>
+	<input type="text" id="myInput" onkeyup="search()" placeholder="Başlıklarda ara.." title="Type in a name" style="margin-left: 30px;">
 </div>
 
 <div id="myTable">
 	{% for item in events %}
 		<div class="speaker_box">
-			<a href="#">
+			<a href="{{ url_for('visitor.visitor_eventinfo_page',event_id=item['id']) }}">
 				<div class="speaker_img">
 					<img src="{{item['image']}}" alt="speaker name" >
 				
 					<div class="info_box">
 						<h5 class="name">{{ item['name']}}</h5>
 						<p class="type">{{item['type_']}}</p>
-						<p class="position" style="margin-top: -20px;">{{item['date']}}</p>
+						<p class="position" style="margin-top: -20px;">{{item['date']}}&nbsp;/&nbsp;{{item['city']}}</p>
 					</div>
 					{% if session['member_id'] == 'admin' %}
 						<form class="form-inline my-2 my-lg-2" style="margin-left: 200px;" >
 							<a href="{{ url_for('admin.admin_edit_competition_page',id=item['id']) }}"
-								class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
+								class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Düzenle</a>
 						</form>
 					{% endif %}	
 				</div>
@@ -98,6 +100,42 @@
 		var input, filter, table, tr, p, i, txtValue;
 		input = document.getElementById("myInput");
 		filter = "Tiyatro";
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("type")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+	function filtering_klasik() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = "Klasik";
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("type")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+	function filtering_konser() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = "Konser";
 		table = document.getElementById("myTable");
 		tr = table.getElementsByClassName("speaker_box");
 		for (i = 0; i < tr.length; i++) {
