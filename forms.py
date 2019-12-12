@@ -63,12 +63,15 @@ class EditTeamForm(FlaskForm):
 
 
 class EditCompetitionForm(FlaskForm):
-    name = StringField("Competition Name")
-    date = DateField("Date")
-    country = StringField("Country")
-    description = TextAreaField("Description")
-    reward = StringField("Reward")
-    submit_competition = SubmitField("Update Team")
+    name = StringField("Event Name")
+    url = StringField("Url")
+    location = StringField("Location")
+    city = StringField("City")
+    image = StringField("Image")
+    date = StringField("Date")
+    type_ = StringField("Type")
+    description = StringField("Description")
+    submit_event = SubmitField("Update Event")
 
 
 class UploadCVForm(FlaskForm):
