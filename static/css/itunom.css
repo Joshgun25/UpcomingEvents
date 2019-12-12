@@ -58,10 +58,10 @@
     font-size: 36px;
     font-family: "Lato-Black";
     text-transform: uppercase;
-    background: -webkit-linear-gradient(left, #1d3ede, #01e6f8);
-    background: -ms-linear-gradient(left, #1d3ede, #01e6f8);
-    background: -moz-linear-gradient(left, #1d3ede, #01e6f8);
-    background: -o-linear-gradient(left, #1d3ede, #01e6f8);
+    background: -webkit-linear-gradient(left, #ff0000, #ffffff);
+    background: -ms-linear-gradient(left, #ff0000, #ffffff);
+    background: -moz-linear-gradient(left, #ff0000, #ffffff);
+    background: -o-linear-gradient(left, #ff0000, #ffffff);
     -webkit-background-clip: text;
     -ms-background-clip: text;
     -o-background-clip: text;
@@ -92,14 +92,14 @@
   #itunom-nav .navbar-nav li a {
     font-family: "OpenSans-Regular";
     font-size: 18px;
-    color: #666666;
+    color: white;
     padding: 5px 15px !important;
     text-transform: uppercase;
   }
   #itunom-nav form a {
     font-family: "OpenSans-Semibold";
     font-size: 18px;
-    color: rgb(0, 23, 23);
+    color: white;
     padding: 5px 25px;
     border-radius: 20px;
     border-width: 2px;

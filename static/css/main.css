@@ -436,10 +436,6 @@ img {
   background: linear-gradient(90deg, #ff5f6d 0%, #ffc371 100%);
 }
 
-.bg-light {
-  background-color: #ffffff !important;
-}
-
 .bg-gray {
   background-color: #f0f2f6 !important;
 }

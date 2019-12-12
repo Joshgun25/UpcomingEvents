@@ -2,16 +2,87 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 
-<h6 style="font-size: 40px; text-align: center;">Home Page</h6>
 
 
+<div style="margin-left: 10px; margin-bottom: 10px;">
+	<button onclick="filtering_all()" id="myBtn" class="btn btn-primary">Tümü</button>
+	<button onclick="filtering_konser()" id="myBtn" class="btn btn-primary">Konser</button>
+	<button onclick="filtering_sinema()" id="myBtn" class="btn btn-primary">Sinema</button>
+	<button onclick="filtering_tiyatro()" id="myBtn" class="btn btn-primary">Tiyatro</button>
+	<input type="text" id="myInput" onkeyup="search()" placeholder="Başlıklarda ara.." title="Type in a name" style="margin-left: 290px;">
+</div>
+
+<div id="myTable">
 
 
-{% for item in competitions %}
-	<div class="speaker_box">
-			
+	<div class="speaker_box">	
 		<div class="speaker_img">
+			<img src="static/images/home/s1.png" alt="speaker name" >
+			<div class="info_box">
+				<h5 class="name">Lorem</h5>
+				<p class="position">Konser</p>
+			</div>
+			{% if session['member_id'] == 'admin' %}
 			
+				<form class="form-inline my-2 my-lg-2" style="margin-left: 200px;" >
+					<a class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
+				</form>
+		
+			{% endif %}
+		</div>
+	</div>
+	<div class="speaker_box">	
+		<div class="speaker_img">
+			<img src="static/images/home/s1.png" alt="speaker name" >
+			<div class="info_box">
+				<h5 class="name">HOLALA</h5>
+				<p class="position">Konser</p>
+			</div>
+			{% if session['member_id'] == 'admin' %}
+			
+				<form class="form-inline my-2 my-lg-2" style="margin-left: 200px;" >
+					<a class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
+				</form>
+		
+			{% endif %}
+		</div>
+	</div>
+	<div class="speaker_box">	
+		<div class="speaker_img">
+			<img src="static/images/home/s1.png" alt="speaker name" >
+			<div class="info_box">
+				<h5 class="name">Impsum</h5>
+				<p class="position">Sinema</p>
+			</div>
+			{% if session['member_id'] == 'admin' %}
+			
+				<form class="form-inline my-2 my-lg-2" style="margin-left: 200px;" >
+					<a class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
+				</form>
+		
+			{% endif %}
+		</div>
+	</div>
+	<div class="speaker_box">	
+		<div class="speaker_img">
+			<img src="static/images/home/s1.png" alt="speaker name" >
+			<div class="info_box">
+				<h5 class="name">Dolar</h5>
+				<p class="position">Tiyatro</p>
+			</div>
+			{% if session['member_id'] == 'admin' %}
+			
+				<form class="form-inline my-2 my-lg-2" style="margin-left: 200px;" >
+					<a class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
+				</form>
+		
+			{% endif %}
+		</div>
+	</div>
+
+	{% for item in competitions %}
+	<div class="speaker_box">	
+		<div class="speaker_img" >
 			<img src="static/images/home/s1.png" alt="speaker name" >
 			<div class="info_box">
 				<h5 class="name">Patricia Stone</h5>
@@ -26,11 +97,104 @@
 		
 			{% endif %}	
 		</div>
-		
-		
 	</div>
+	{% endfor %}
+	
+</div>
 
-{% endfor %}
 
+<script>
+	function search() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("name")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+
+	function filtering_konser() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = "KONSER";
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("position")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+	function filtering_sinema() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = "SINEMA";
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("position")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+	function filtering_tiyatro() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = "TIYATRO";
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("position")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+	function filtering_all() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = "";
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("position")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+</script>
 
 {% endblock content %}
