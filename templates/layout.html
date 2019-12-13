@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-   
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/utils.css') }}">
 </head>
 
 <body>
@@ -24,13 +24,13 @@
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">Ana sayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('visitor.visitor_contact_page') }}">İLETİŞİM</a></li>
                 </ul>
                 <div id="logging-button">
                     {% if session.get('logged_in') == None %}
                     <form class="form-inline my-2 my-lg-0">
                         <a href="{{ url_for('login.login_page') }}"
-                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Giriş</a>
+                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">GİRİŞ</a>
                     </form>
                     {% else %}
                     <form class="form-inline my-2 my-lg-0">

@@ -11,6 +11,12 @@ visitor = Blueprint(name='visitor', import_name=__name__,
 
 # TODO:: IMPLEMENT SMALL LOGO OF EACH ROUTE'S ELEMENTS
 
+@visitor.route("/contact")
+@visitor.route("/contact/")
+def visitor_contact_page():
+    return render_template('contact_page.html')
+
+
 @visitor.route("/eventinfo/<event_id>")
 def visitor_eventinfo_page(event_id):
     event_data = [ 

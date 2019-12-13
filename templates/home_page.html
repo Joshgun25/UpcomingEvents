@@ -5,13 +5,27 @@
 
 
 <div style="margin-left: 10px; margin-bottom: 60px;">
+
+	<input type="text" id="myInput" onkeyup="search()" placeholder="Başlıklarda ara.." title="Type in a name" size="113px">
+    </br></br>
 	<button onclick="filtering_all()" id="myBtn" class="btn btn-primary">Tümü</button>
 	<button onclick="filtering_senfoni()" id="myBtn" class="btn btn-primary">Senfoni</button>
 	<button onclick="filtering_sinema()" id="myBtn" class="btn btn-primary">Sinema</button>
 	<button onclick="filtering_tiyatro()" id="myBtn" class="btn btn-primary">Tiyatro</button>
 	<button onclick="filtering_klasik()" id="myBtn" class="btn btn-primary">Klasik</button>
 	<button onclick="filtering_konser()" id="myBtn" class="btn btn-primary">Konser</button>
-	<input type="text" id="myInput" onkeyup="search()" placeholder="Başlıklarda ara.." title="Type in a name" style="margin-left: 30px;">
+	<select class="btn btn-primary" name="city" id="dropdown" onchange="filtering_city()" style="margin-left: 70px;">
+		<option value="">Şehir seç</option>
+		<option value="İstanbul">İstanbul</option>
+		<option value="İzmir">İzmir</option>
+		<option value="Ankara">Ankara</option>
+		<option value="Bursa">Bursa</option>
+	</select>
+	</br></br>
+	
+	
+	
+		
 </div>
 
 <div id="myTable">
@@ -24,7 +38,8 @@
 					<div class="info_box">
 						<h5 class="name">{{ item['name']}}</h5>
 						<p class="type">{{item['type_']}}</p>
-						<p class="position" style="margin-top: -20px;">{{item['date']}}&nbsp;/&nbsp;{{item['city']}}</p>
+						<p class="position" style="margin-top: -20px;">{{item['date']}}</p>
+						<p class="city" style="margin-top: -20px;">{{item['city']}}</p>
 					</div>
 					{% if session['member_id'] == 'admin' %}
 						<form class="form-inline my-2 my-lg-2" style="margin-left: 200px;" >
@@ -36,7 +51,8 @@
 			</a>	
 		</div>	
 {% endfor %}
-	
+<!--drp = document.getElementById("dropdown");
+		filter = drp.options[drp.selectedIndex].value;-->
 </div>
 
 
@@ -140,6 +156,27 @@
 		tr = table.getElementsByClassName("speaker_box");
 		for (i = 0; i < tr.length; i++) {
 			p = tr[i].getElementsByClassName("type")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+	function filtering_city() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+
+		drp = document.getElementById("dropdown");
+		filter = drp.options[drp.selectedIndex].value;
+
+		table = document.getElementById("myTable");
+		tr = table.getElementsByClassName("speaker_box");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("city")[0];
 			if (p) {
 				txtValue = p.textContent || p.innerText;
 				if (txtValue.indexOf(filter) > -1) {
