@@ -24,7 +24,16 @@
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">Ana sayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('visitor.visitor_contact_page') }}">İLETİŞİM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('visitor.visitor_contact_page') }}">İletişim</a></li>
+                    
+                    {% if session['member_id'] == 'admin' %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('panel.admin_panel_page') }}">Admin</a></li>
+                    {% endif %}
+
+                    {% if session['member_id'] == 'organizer' %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('panel.subteam_leader_panel_page') }}">Subteam Leader</a></li>
+                    {% endif %}
+
                 </ul>
                 <div id="logging-button">
                     {% if session.get('logged_in') == None %}

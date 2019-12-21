@@ -11,11 +11,12 @@ from home import home
 from login import login
 from member_profile import member_profile
 from visitor import visitor
+from panel import panel
 
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODEARRAY)
 
-RELEASE = True
+RELEASE = False
 
 if(not RELEASE):
     os.environ['DATABASE_URL'] = "postgres://postgres:docker@localhost:5432/postgres"
@@ -29,6 +30,7 @@ app.register_blueprint(login)
 app.register_blueprint(member_profile)
 app.register_blueprint(admin)
 app.register_blueprint(visitor)
+app.register_blueprint(panel)
 
 @app.errorhandler(404)
 def not_found(e):
