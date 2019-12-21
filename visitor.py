@@ -11,6 +11,12 @@ visitor = Blueprint(name='visitor', import_name=__name__,
 
 # TODO:: IMPLEMENT SMALL LOGO OF EACH ROUTE'S ELEMENTS
 
+@visitor.route("/contact")
+@visitor.route("/contact/")
+def visitor_contact_page():
+    return render_template('contact_page.html')
+
+
 @visitor.route("/eventinfo/<event_id>")
 def visitor_eventinfo_page(event_id):
     event_data = [ 
@@ -57,6 +63,83 @@ def visitor_eventinfo_page(event_id):
             "date":"Aralık- 13",
             "type_":"Klasik,Senfoni,Konser",
             "description":"  Şef :Ender Sakpınar Solist: Emılıo Aversano (Piano)"
+        },
+        { 
+            "id" : "4",
+            "name":"13  Aralık Konseri   İstanbul Devlet Senfoni Orkestrası",
+            "url":"https://biletinial.com/muzik/13-aralik-idso",
+            "location":"Grand Pera  Emek Sahnesi",
+            "city":"İstanbul",
+            "image":"https://d2yj4fhf636aio.cloudfront.net/Uploads/Films/13-aralik-konseri-istanbul-devlet-senfoni-orkestrasi-2019129122243.jpg",
+            "date":"Aralık- 13",
+            "type_":"Klasik,Senfoni,Konser",
+            "description":"  Şef :Ender Sakpınar Solist: Emılıo Aversano (Piano)"
+        },
+        {   
+            "id" : "5",
+            "name":"13 Aralık Konseri   CSO",
+            "url":"https://biletinial.com/muzik/13-aralik19-cso",
+            "location":"Cumhurbaşkanlığı Senfoni Orkestrası Salonu",
+            "city":"Ankara",
+            "image":"https://d2yj4fhf636aio.cloudfront.net/Uploads/Films/13-aralik-konseri-cso-20191126165219.jpg",
+            "date":"Aralık- 13",
+            "type_":"Senfoni",
+            "description":"   : Antonio Pirolli  : Perihan Artan Nayır, soprano Asude Karayavuz, mezzo-soprano Emre Akkuş, tenor Şafak Güç, bas Ankara Devlet Opera ve Balesi Korosu Koro Şefi: Giampaolo Vessella  Giuseppe Verdi ………………………………”Requiem”"
+        },
+        {   
+            "id" : "6",
+            "name":"Requiem - ÇDSO",
+            "url":"https://biletinial.com/muzik/requiem-cdso",
+            "location":"Adana B.Belediyesi Konser Salonu",
+            "city":"Adana",
+            "image":"https://d2yj4fhf636aio.cloudfront.net/Uploads/Films/requiem-cdso-20191161155.jpg",
+            "date":"Aralık- 13",
+            "type_":"Sinema",
+            "description":"  10+ ”Requıem” Şef: Rengim Gökmen Solistler: Can Çakmur “Piyano” Nurdan Küçükekmekçi “Soprano” Arda Aktar “Tenor” Koro: Ankara Devlet Çoksesli Korosu Koro şefi : Burak Onur Erdem Program: F. Mendelssohn / Piyano Konçertosu No.2 G. Fauré / Requıem (Adana'da ilk Seslendiriliş) "
+        },
+        { 
+            "id" : "7",
+            "name":"Çeşm-i Ahu  Diyarbakır Devlet Klasik Türk Müziği Korosu",
+            "url":"https://biletinial.com/muzik/cesmi-ahu-ddktmk",
+            "location":"Cahit Sıtkı Tarancı KSM KoroSalonu",
+            "city":"Diyarbakır",
+            "image":"https://d2yj4fhf636aio.cloudfront.net/Uploads/Films/cesm-i-ahu-diyarbakir-devlet-klasik-turk-muzigi-korosu-20191122103917.jpg",
+            "date":"Aralık- 12",
+            "type_":"Tiyatro",
+            "description":"  M.Tanju Demirkol Çeşm-İ Ahu ( Periyodik Konseri)  Hicaz Eserler Hisarbuselik  Nurdan Ünal, Deniz Değirmenci, Ebru Özbay, Bedriye İleri "
+        },
+        { 
+            "id" : "8",
+            "name":"19 Aralık Konseri  CSO",
+            "url":"https://biletinial.com/muzik/19-aralik19-cso",
+            "location":"Cumhurbaşkanlığı Senfoni Orkestrası Salonu",
+            "city":"Ankara",
+            "image":"https://d2yj4fhf636aio.cloudfront.net/Uploads/Films/19-aralik-konseri-cso-20191126165743.jpg",
+            "date":"Aralık- 19",
+            "type_":"Senfoni",
+            "description":"  : Rengim Gökmen  Ayşegül Sarıca, piyano  Wolfgang Amadeus Mozart ………“Figaro’nun Düğünü” Operası Uvertürü, Kv.492 Wolfgang Amadeus Mozart ……… Piyano Konçertosu Nr. 20, re minör, Kv.466 Wolfgang Amadeus Mozart ……… 41.Senfoni, do majör, Kv.551"
+        },
+        { 
+            "id" : "9",
+            "name":"19 Aralık Konseri Bursa Bölge Devlet Senfoni Orkestrası",
+            "url":"https://biletinial.com/muzik/19-aralik-konseri-bbdso",
+            "location":"Merinos AKKM Osmangazi Salonu",
+            "city":"Bursa",
+            "image":"https://d2yj4fhf636aio.cloudfront.net/Uploads/Films/19-aralik-konseri-bursa-bolge-devlet-senfoni-orkestrasi-2019125132455.jpg",
+            "date":"Aralık- 19",
+            "type_":"Konser",
+            "description":"  Ayyub Guliyev Alihan Samedov “Balaban” P.Bülbüloğlu “Aşk Ve Ölüm Balesinden Seçmeler” “Balaban Konçertosu” “Senfoni No.9”"
+        },
+        { 
+            "id" : "10",
+            "name":"11 Aralık Konseri İstanbul Devlet Türk Müziği Araştırma ve Uygulama Topluluğu",
+            "url":"https://biletinial.com/muzik/11-aralik-ist-ar-uyg-toplulugu",
+            "location":"Altunizade Kültür ve Sanat Merkezi",
+            "city":"İstanbul",
+            "image":"https://d2yj4fhf636aio.cloudfront.net/Uploads/Films/11-aralik-konseri-istanbul-arastirma-ve-uygulama-toplulugu-20191125162215.png",
+            "date":"Aralık- 11",
+            "type_":"Türk Müziği",
+            "description":"  1.Bölüm: Hicâzbûselik Makâmında Klâsik Takım 2.Bölüm: Mâhur Makâmında Fasıl Konuk Şef Önay Akın yönetmenliğinde, Hicâzbûselik Makâmının büyük formda bestelenmiş eserlerinden oluşan Klâsik Takım ve Mâhur Makâmının seçilmiş eserlerinden oluşan bir Fasıl icrâ edilecektir."
         }
     ]
 
