@@ -21,11 +21,6 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
-class SQLForm(FlaskForm):
-    query = TextAreaField('SQL to be run', validators=[DataRequired()])
-    submit = SubmitField('Run query')
-
-
 class EditEventForm(FlaskForm):
     name = StringField("Event Name")
     url = StringField("Url")
@@ -48,10 +43,17 @@ class AddEventForm(FlaskForm):
     description = StringField("Description")
     add_event = SubmitField("Add Event")
 
+class OrganizerProfile(FlaskForm):
+    name = StringField("Name")
+    email = StringField("Email")
+    org_id = IntegerField("ID")
+    address = StringField("Adddress")
 
-class UploadCVForm(FlaskForm):
-    cv = FileField('CV File')
+class SignupForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    name = StringField("Name")
+    email = StringField('Email')
+    address = StringField('Address')
+    submit_reg = SubmitField('Signup')
 
-
-class UploadImageForm(FlaskForm):
-    image = FileField('Image File')

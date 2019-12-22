@@ -10,7 +10,7 @@
 
 
 <div class="table-responsive">
-	<table id="myTable" class = "table table-striped" style='margin-top: 5%; table-layout: auto;'>
+	<table id="myTable" style='margin-top: 5%; table-layout: auto;'>
 		<tr>
 			<th>Name</th>
 			<th>Date</th>
@@ -24,17 +24,17 @@
 			<td style="color: cornsilk;">{{item['name']}}</td>
 			<td style="color: cornsilk;">{{item['date']}}</td>
 			<td style="color: cornsilk;">{{item['type']}}</td>
-			<td style="color: cornsilk;">{{item[city]}}</td>
-			{% if session['auth_type'] == "Team leader" %}
+			<td style="color: cornsilk;">{{item['city']}}</td>
+			{% if session['auth_type'] == 'organizer' %}
 			<td>
 				<form class="form-inline my-2 my-lg-2">
-					<a href="{{ url_for('organizer.event_edit_sponsor_page',event_id=item['id']) }}"
+					<a href="{{ url_for('organizer.organizer_edit_event_page',id=item['id']) }}"
 						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
 				</form>
 			</td>
 			<td>
 				<form class="form-inline my-2 my-lg-2">
-					<a href="{{ url_for('organizer.event_delete_sponsor_page',event_id=item['id']) }}"
+					<a href="{{ url_for('organizer.organizer_delete_event_page',event_id=item['id']) }}"
 						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Delete</a>
 				</form>
 			</td>

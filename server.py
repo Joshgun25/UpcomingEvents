@@ -10,13 +10,14 @@ from organizer import organizer
 from dbinit import initialize
 from home import home
 from login import login
+from sign_up import sign_up
 from visitor import visitor
 from panel import panel
 
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODEARRAY)
 
-RELEASE = False
+RELEASE = True
 
 if(not RELEASE):
     os.environ['DATABASE_URL'] = "postgres://postgres:docker@localhost:5432/postgres"
@@ -31,6 +32,7 @@ app.register_blueprint(login)
 app.register_blueprint(admin)
 app.register_blueprint(visitor)
 app.register_blueprint(panel)
+app.register_blueprint(sign_up)
 
 @app.errorhandler(404)
 def not_found(e):

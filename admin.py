@@ -9,8 +9,6 @@ from flask import (Blueprint, Flask, abort, flash, redirect, render_template,
 				   request, send_from_directory, session, url_for)
 from werkzeug.utils import secure_filename
 
-from forms import (SQLForm,
-				   UploadCVForm, UploadImageForm)
 import requests
 
 admin = Blueprint(name='admin', import_name=__name__)
