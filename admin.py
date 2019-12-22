@@ -27,13 +27,13 @@ def admin_page():
 		return redirect(url_for('home.home_page'))
 
 
-@admin.route("/admin/profile", methods=['GET', 'POST'])
-def admin_profile_page():
+@admin.route("/admin/organizers", methods=['GET', 'POST'])
+def admin_organizers_page():
 	if not session.get('logged_in'):
 		return redirect(url_for('home.home_page'))
 	else:
-		result = None
-		return render_template('admin_profile_page.html', result=result)
+		result = requests.get("https://ituse19-uep.herokuapp.com/api/admin/all_organizers/")
+		return render_template('admin_organizers_page.html', organizers=result.json())
 
 
 @admin.route("/admin/edit/event/<id>", methods=['GET', 'POST'])
@@ -117,11 +117,6 @@ def admin_approve_event(id):
 	else:
 		requests.post("https://ituse19-uep.herokuapp.com/api/admin/new_event_approve/{}".format(id))
 		return render_template('admin_review_events_page.html')
-
-
-
-
-
 
 
 
