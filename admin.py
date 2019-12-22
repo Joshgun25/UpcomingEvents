@@ -34,6 +34,8 @@ def admin_organizers_page():
 		return render_template('admin_organizers_page.html', organizers=result.json())
 
 
+
+
 @admin.route("/admin/review/events", methods=['GET'])
 def admin_review_events_page():
 	if not session.get('logged_in'):
@@ -41,7 +43,6 @@ def admin_review_events_page():
 	else:
 		result = requests.get("https://ituse19-uep.herokuapp.com/api/admin/event_review")
 		return render_template('admin_review_events_page.html', result=result.json())
-	return render_template('admin_review_events_page.html', result=result.json())
 
 
 @admin.route("/admin/reject/event/<id>", methods=['GET','DELETE'])
@@ -50,8 +51,7 @@ def admin_reject_event(id):
 		return redirect(url_for('home.home_page'))
 	else:
 		requests.delete("https://ituse19-uep.herokuapp.com/api/admin/event_reject/{}".format(id))
-		return render_template(url_for('admin.admin_review_events_page'))
-	return render_template(url_for('admin.admin_review_events_page'))
+		return redirect(url_for('admin.admin_review_events_page'))
 
 @admin.route("/admin/approve/event/<id>", methods=['GET','POST'])
 def admin_approve_event(id):
@@ -59,17 +59,19 @@ def admin_approve_event(id):
 		return redirect(url_for('home.home_page'))
 	else:
 		requests.post("https://ituse19-uep.herokuapp.com/api/admin/new_event_approve/{}".format(id))
-		return render_template(url_for('admin.admin_review_events_page'))
-	return render_template(url_for('admin.admin_review_events_page'))
+		return redirect(url_for('admin.admin_review_events_page'))
+
+
+
 
 @admin.route("/admin/review/organizers", methods=['GET', 'POST'])
+@admin.route("/admin/review/organizers/", methods=['GET', 'POST'])
 def admin_review_organizers_page():
 	if not session.get('logged_in'):
 		return redirect(url_for('home.home_page'))
 	else:
 		result = requests.get("https://ituse19-uep.herokuapp.com/api/admin/organizer_review")
 		return render_template('admin_review_organizers_page.html', result=result.json())
-	return render_template('admin_review_organizers_page.html', result=result.json())
 
 
 @admin.route("/admin/reject/organizer/<id>", methods=['GET','DELETE'])
@@ -78,8 +80,7 @@ def admin_reject_organizer(id):
 		return redirect(url_for('home.home_page'))
 	else:
 		requests.delete("https://ituse19-uep.herokuapp.com/api/admin/organizer_reject/{}".format(id))
-		return render_template(url_for('admin.admin_review_organizers_page'))
-	return render_template(url_for('admin.admin_review_organizers_page'))
+		return redirect(url_for('admin.admin_review_organizers_page'))
 
 @admin.route("/admin/approve/organizer/<id>", methods=['GET', 'POST'])
 def admin_approve_organizer(id):
@@ -87,6 +88,5 @@ def admin_approve_organizer(id):
 		return redirect(url_for('home.home_page'))
 	else:
 		requests.post("https://ituse19-uep.herokuapp.com/api/admin/organizer_approve/{}".format(id))
-		return render_template(url_for('admin.admin_review_organizers_page'))
-	return render_template(url_for('admin.admin_review_organizers_page'))
+		return redirect(url_for('admin.admin_review_organizers_page'))
 

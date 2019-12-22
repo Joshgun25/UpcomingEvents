@@ -29,13 +29,13 @@
 			{% if session['auth_type'] == "admin" %}
 			<td>
 				<form class="form-inline my-2 my-lg-2">
-					<a href="#"
+					<a href="{{ url_for('admin.admin_approve_organizer', id=item['id']) }}"
 						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Approve</a>
 				</form>
 			</td>
 			<td>
 				<form class="form-inline my-2 my-lg-2">
-					<a href="#"
+					<a href="{{ url_for('admin.admin_reject_organizer', id=item['id']) }}"
 						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Reject</a>
 				</form>
 			</td>

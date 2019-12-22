@@ -16,7 +16,7 @@ from panel import panel
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODEARRAY)
 
-RELEASE = True
+RELEASE = False
 
 if(not RELEASE):
     os.environ['DATABASE_URL'] = "postgres://postgres:docker@localhost:5432/postgres"
