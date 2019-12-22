@@ -10,6 +10,7 @@ from organizer import organizer
 from dbinit import initialize
 from home import home
 from login import login
+from sign_up import sign_up
 from member_profile import member_profile
 from visitor import visitor
 from panel import panel
@@ -33,6 +34,7 @@ app.register_blueprint(member_profile)
 app.register_blueprint(admin)
 app.register_blueprint(visitor)
 app.register_blueprint(panel)
+app.register_blueprint(sign_up)
 
 @app.errorhandler(404)
 def not_found(e):

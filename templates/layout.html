@@ -41,6 +41,10 @@
                         <a href="{{ url_for('login.login_page') }}"
                             class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Giriş</a>
                     </form>
+                    <form class="form-inline my-2 my-lg-0">
+                        <a href="{{ url_for('sign_up.sign_up_page') }}"
+                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Signup</a>
+                    </form>
                     {% else %}
                     <form class="form-inline my-2 my-lg-0">
                         <a href="{{ url_for('login.logout_page') }}"

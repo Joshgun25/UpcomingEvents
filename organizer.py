@@ -9,7 +9,7 @@ from flask import (Blueprint, Flask, abort, flash, redirect, render_template,
 from werkzeug.utils import secure_filename
 
 import requests
-from forms import (EditEventForm, AddEventForm)
+from forms import (EditEventForm, AddEventForm, OrganizerProfile)
 from member_profile import Member
 from queries import run, select, update
 
@@ -21,10 +21,12 @@ organizer = Blueprint(name='organizer', import_name=__name__)
 def myevents_page():
 	if (session.get('auth_type') == 'organizer'):
 		result = requests.get("https://ituse19-uep.herokuapp.com/api/org_events/{}".format(session.get('organizer_id')))
-
-		return render_template('organizer_myevents_page.html', myevents = result.json())
-	else:
-		return redirect(url_for('home.home_page'))
+		response = result.json()
+	
+		if(type(response)==list ):
+			return render_template('organizer_myevents_page.html', myevents = result.json())
+		else:
+			return redirect(url_for('home.home_page'))
 
 
 @organizer.route("/organizer/event/edit/<id>", methods=['GET', 'POST'])
@@ -47,11 +49,8 @@ def organizer_edit_event_page(id):
 			type_ = form.type_.data.encode('utf-8')
 
 			URL = "https://ituse19-uep.herokuapp.com/api/event_update"
-			PARAMS = {'old_event_id': id, 'name': name, 'date': date, 'description': description, 'ticket_url':url, 'image': image, 'location': location, 'city': city, 'e_type': type_, 'org_id': session.get('organizer_id')}
+			PARAMS = {'old_event_id': id, 'name': name, 'date': date, 'description': description, 'ticket_url':url, 'image': image, 'location': location, 'city': city, 'type': type_, 'org_id': session.get('organizer_id')}
 			r = requests.post(url=URL,params = PARAMS)
-			result = r.json()
-			if result['result'] == 1:
-				print(result['message'])
 
 			return redirect(url_for('organizer.organizer_edit_event_page', id=id))
 		else:
@@ -77,7 +76,7 @@ def organizer_edit_event_page(id):
 		flash('No organizer privileges...', 'danger')
 		return redirect(url_for('home.home_page'))
 
-@organizer.route("/admin/add/team", methods=['GET', 'POST'])
+@organizer.route("/organizer/add/event", methods=['GET', 'POST'])
 def organizer_add_event_page():
 	if(session.get('auth_type') != 'organizer'):
 		flash('No organizer privileges...', 'danger')
@@ -103,3 +102,34 @@ def organizer_add_event_page():
 
 			return redirect(url_for('organizer.organizer_add_event_page'))
 		return render_template('organizer_add_event_page.html',form=form)
+
+
+@organizer.route("/organizer/delete/event/<event_id>", methods=['GET', 'DELETE'])
+def organizer_delete_event_page(event_id):
+	auth = session.get('auth_type')
+	if(auth != "organizer"):
+		flash("Not an authorized person")
+		return redirect(url_for("home.home_page"))
+	
+	delete_event = requests.delete("https://ituse19-uep.herokuapp.com/api/delete_event/{}".format(event_id))
+	
+	return redirect(url_for("organizer.myevents_page"))
+
+
+@organizer.route("/organizer/myprofile/", methods=['GET', 'DELETE'])
+def organizer_profile_page():
+	auth = session.get('auth_type')
+	if(auth != "organizer"):
+		flash("Not an authorized person")
+		return redirect(url_for("home.home_page"))
+	
+	profile = requests.get("https://ituse19-uep.herokuapp.com/api/get_organizer_info/{}".format(session.get('organizer_id')))
+	myprofile = profile.json()[0]
+	form = OrganizerProfile()
+	form.name.data = myprofile['name']
+	form.org_id.data = myprofile['id']
+	form.email.data = myprofile['mail']
+	form.address.data = myprofile['address']
+	print(profile.json()[0]['mail'])
+	return render_template('organizer_myprofile_page.html', form=form, myprofile = profile.json()[0])
+    
