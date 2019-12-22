@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import re
 
 from flask_wtf import FlaskForm
@@ -13,11 +14,6 @@ from queries import select
 auth_type_choices = [('3', 'Team Leader'),
                      ('4', 'Subteam Leader'),
                      ('1', 'Member')]
-major_choices = [('blg', 'Computer Engineering'),
-                 ('ehb', 'Electronics and Communication'),
-                 ('kon', 'Control and Automation Engineering'),
-                 ('uck', 'Aeronautical Engineering'),
-                 ('end', 'Industrial Engineering')]
 
 
 class LoginForm(FlaskForm):
@@ -45,8 +41,6 @@ class EditMemberForm(FlaskForm):
     age = IntegerField('Age')
     phone = StringField('Phone', validators=[DataRequired()])
     clas = IntegerField('Class')
-    major = SelectField('Major', choices=major_choices,
-                        validators=[DataRequired()])
     submit_member = SubmitField('Update Profile')
 
 
@@ -75,8 +69,8 @@ class EditCompetitionForm(FlaskForm):
 
 
 class UploadCVForm(FlaskForm):
-    cv = FileField(u'CV File')
+    cv = FileField('CV File')
 
 
 class UploadImageForm(FlaskForm):
-    image = FileField(u'Image File')
+    image = FileField('Image File')

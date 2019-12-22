@@ -26,12 +26,12 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home_page') }}">Ana sayfa</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('visitor.visitor_contact_page') }}">İletişim</a></li>
                     
-                    {% if session['member_id'] == 'admin' %}
+                    {% if session['auth_type'] == 'admin' %}
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('panel.admin_panel_page') }}">Admin</a></li>
                     {% endif %}
 
-                    {% if session['member_id'] == 'organizer' %}
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('panel.subteam_leader_panel_page') }}">Subteam Leader</a></li>
+                    {% if session['auth_type'] == 'organizer' %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('panel.organizer_panel_page') }}">Organizatör</a></li>
                     {% endif %}
 
                 </ul>
@@ -39,7 +39,7 @@
                     {% if session.get('logged_in') == None %}
                     <form class="form-inline my-2 my-lg-0">
                         <a href="{{ url_for('login.login_page') }}"
-                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">GİRİŞ</a>
+                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Giriş</a>
                     </form>
                     {% else %}
                     <form class="form-inline my-2 my-lg-0">

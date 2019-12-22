@@ -7,18 +7,18 @@ panel = Blueprint(name='panel', import_name=__name__,
 
 @panel.route("/panel/admin")
 def admin_panel_page():
-    auth = session.get('member_id') #member_id keeps auth type
+    auth = session.get('auth_type')
     if(auth != 'admin'):
         flash("Unauthorized request", 'danger')
         return redirect(url_for("home.home_page"))
     return render_template("admin_panel_page.html")
 
 
-@panel.route("/panel/teamleader")
-def team_leader_panel_page():
+@panel.route("/panel/organizer")
+def organizer_panel_page():
     auth = session.get('auth_type')
-    if(auth != 'Team leader'):
+    if(auth != 'organizer'):
         flash("Unauthorized request", 'danger')
         return redirect(url_for("home.home_page"))
-    return render_template("team_leader_panel_page.html")
+    return render_template("organizer_panel_page.html")
 
