@@ -14,11 +14,11 @@ def admin_panel_page():
     return render_template("admin_panel_page.html")
 
 
-@panel.route("/panel/teamleader")
+@panel.route("/panel/organizer")
 def team_leader_panel_page():
     auth = session.get('auth_type')
     if(auth != 'Team leader'):
         flash("Unauthorized request", 'danger')
         return redirect(url_for("home.home_page"))
-    return render_template("team_leader_panel_page.html")
+    return render_template("organizer_panel_page.html")
 

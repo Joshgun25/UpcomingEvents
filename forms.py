@@ -62,7 +62,7 @@ class EditTeamForm(FlaskForm):
     submit_team = SubmitField('Update Team')
 
 
-class EditCompetitionForm(FlaskForm):
+class EditEventForm(FlaskForm):
     name = StringField("Event Name")
     url = StringField("Url")
     location = StringField("Location")

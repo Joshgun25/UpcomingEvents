@@ -1,20 +1,20 @@
 {% extends "layout.html" %}
-{% block title %}Profile Page{% endblock %}
+{% block title %}EventInfo Page{% endblock %}
 {% block content %}
 
 <div class="speaker_img" style="margin-bottom: 600px;">
-    <img src="{{result['image']}}" alt="speaker name" >
+    <img src="{{result[0]['image']}}" alt="speaker name" >
 </div>
 <div style="margin-left: 700px; margin-top: -1400px; background: rgba(0,0,0,0.3); padding: 10px;">
-    <h5 class="name" style="color: white; font-size: 22px;">{{ result['name']}}</h5>
-    <p class="type" style="color: white; font-size: 20px;">Tür:&emsp;&emsp;{{result['type_']}}</p><br>
-    <p style="color: white; font-size: 20px;">Tarih:&emsp;{{result['date']}}</p><br>
-    <p style="color: white; font-size: 20px;">Yer:&emsp;&emsp;{{result['city']}}/{{result['location']}}</p><br>
+    <h5 class="name" style="color: white; font-size: 22px;">{{ result[0]['name']}}</h5>
+    <p class="type" style="color: white; font-size: 20px;">Tür:&emsp;&emsp;{{result[0]['type_']}}</p><br>
+    <p style="color: white; font-size: 20px;">Tarih:&emsp;{{result[0]['date']}}</p><br>
+    <p style="color: white; font-size: 20px;">Yer:&emsp;&emsp;{{result[0]['city']}}/{{result['location']}}</p><br>
     <div class="col-md-3 text-md-right text-center">
-        <a href="{{result['url']}}" class="btn btn-primary btn-rounded mt30" style="margin-left: 100px; font-size: 15px; font-size: 22px; background-color: black;">Bilet al</a>
+        <a href="{{result[0]['url']}}" class="btn btn-primary btn-rounded mt30" style="margin-left: 100px; font-size: 15px; font-size: 22px; background-color: black;">Bilet al</a>
     </div>
 </div>
 <div>
-    <p style="color: white; font-size: 20px; padding-top: 500px;">Açıklama:&emsp;{{result['description']}}</p><br>
+    <p style="color: white; font-size: 20px; padding-top: 500px;">Açıklama:&emsp;{{result[0]['description']}}</p><br>
 </div>
 {% endblock content %}
