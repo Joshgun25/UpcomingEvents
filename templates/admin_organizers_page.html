@@ -21,7 +21,7 @@
 			<th></th>
 
 		</tr>
-		{% for item in result %}
+		{% for item in organizers %}
 		<tr>
 			<td>{{item['name']}}</td>
 			<td>{{item['mail']}}</td>
@@ -30,13 +30,13 @@
 			<td>
 				<form class="form-inline my-2 my-lg-2">
 					<a href="#"
-						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Approve</a>
+						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
 				</form>
 			</td>
 			<td>
 				<form class="form-inline my-2 my-lg-2">
 					<a href="#"
-						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Reject</a>
+						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Delete</a>
 				</form>
 			</td>
 			{% endif %}	
