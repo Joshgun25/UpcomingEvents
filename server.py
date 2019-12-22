@@ -6,6 +6,7 @@ from flask import (Blueprint, Flask, abort, flash, redirect, render_template,
                    request, send_from_directory, session, url_for)
 
 from admin import admin
+from organizer import organizer
 from dbinit import initialize
 from home import home
 from login import login
@@ -26,6 +27,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '9ioJbIGGH6ndzWOi3vEW'
 
 app.register_blueprint(home)
+app.register_blueprint(organizer)
 app.register_blueprint(login)
 app.register_blueprint(member_profile)
 app.register_blueprint(admin)

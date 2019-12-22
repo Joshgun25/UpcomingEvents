@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}My Events Page{% endblock %}
+{% block content %}
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/competitions.css') }}" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+<h1 id="header" class="text-primary">My Events</h1>
+
+
+
+<div class="table-responsive">
+	<table id="myTable" class = "table table-striped" style='margin-top: 5%; table-layout: auto;'>
+		<tr>
+			<th>Name</th>
+			<th>Date</th>
+			<th>Type</th>
+			<th>City</th>
+			<th></th>
+			<th></th>
+		</tr>
+		{% for item in myevents %}
+		<tr>
+			<td>{{item['name']}}</td>
+			<td>{{item['date']}}</td>
+			<td>{{item['type']}}</td>
+			<td>{{item[city]}}</td>
+			{% if session['auth_type'] == "Team leader" %}
+			<td>
+				<form class="form-inline my-2 my-lg-2">
+					<a href="{{ url_for('organizer.event_edit_sponsor_page',event_id=item['id']) }}"
+						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
+				</form>
+			</td>
+			<td>
+				<form class="form-inline my-2 my-lg-2">
+					<a href="{{ url_for('organizer.event_delete_sponsor_page',event_id=item['id']) }}"
+						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Delete</a>
+				</form>
+			</td>
+			{% endif %}	
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock content %}    

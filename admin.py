@@ -9,7 +9,7 @@ from flask import (Blueprint, Flask, abort, flash, redirect, render_template,
 				   request, send_from_directory, session, url_for)
 from werkzeug.utils import secure_filename
 
-from forms import (EditCompetitionForm, EditMemberForm, EditTeamForm, SQLForm,
+from forms import (EditMemberForm, EditTeamForm, SQLForm,
 				   UploadCVForm, UploadImageForm)
 from member_profile import Member
 from queries import run, select, update
