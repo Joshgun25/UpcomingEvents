@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block title %}Competitions Page{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/competitions.css') }}" />
+<h1 id="header" class="text-primary" style="color: rgb(138, 0, 0);">Review Events</h1>
+
+
+  <div class="input-group">
+    <input type="search" id="myInput" onkeyup="search()" placeholder="Search by name..." aria-describedby="button-addon1" class="form-control border-0 bg-light">
+  </div>
+
+
+<div class="container list-article" id="myDiv">
+  {% for i in range(10) %}
+  <div class="col-xs-12 article-wrapper">
+    <article class="arti">
+      <a href="here link" class="more">more</a>
+      <div class="img-wrapper"><img src="static/images/member/1jpg" alt="" /></div>
+      <h1 class="name">here name</h1>
+      <p>here smth else</p>
+	</article>
+	{% if session['member_id'] == 'admin' %}
+			<td>
+				<form class="form-inline my-2 my-lg-2">
+					<a href="#"
+						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Accept</a>
+				</form>
+			</td>
+			<td>
+				<form class="form-inline my-2 my-lg-2">
+					<a onclick="delete_popup()"
+						class="btn btn-outlnie-dark my-2 my-sm-0 mr-3 text-uppercase">Decline</a>
+					<a href ="#" id="DeleteLink"></a>
+				</form>
+			</td>
+	{% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+	function search() {
+		var input, filter, table, tr, p, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myDiv");
+		tr = table.getElementsByTagName("div");
+		for (i = 0; i < tr.length; i++) {
+			p = tr[i].getElementsByClassName("name")[0];
+			if (p) {
+				txtValue = p.textContent || p.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+</script>
+<script src="{{url_for('static', filename='js/delete_popup.js')}}"></script>
+
+{% endblock content %}

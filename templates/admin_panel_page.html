@@ -5,15 +5,15 @@
 	<div class="container-fluid">
 		<div class="row">
 			<form class="form-inline my-2 my-lg-2">
-				<a href="#"
+				<a href="{{ url_for('admin.admin_profile_page') }}"
 					class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">My Profile</a>
 			</form>
 			<form class="form-inline my-2 my-lg-2">
-				<a href="#"
+				<a href="{{ url_for('admin.admin_review_organizers_page') }}"
 					class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Review pending organizer requests</a>
 			</form>
 			<form class="form-inline my-2 my-lg-2">
-				<a href="#"
+				<a href="{{ url_for('admin.admin_review_events_page') }}"
 					class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Review pending event requests</a>
 			</form>
 		</div>
