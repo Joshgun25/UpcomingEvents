@@ -6,10 +6,7 @@ from flask import (Blueprint, Flask, abort, flash, redirect, render_template,
 from forms import *
 from queries import select
 import requests
-import sys  
 
-reload(sys)  
-sys.setdefaultencoding('utf8')
 
 home = Blueprint(name='home', import_name=__name__,
                     template_folder='templates')
