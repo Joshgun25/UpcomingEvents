@@ -31,9 +31,10 @@ def logout_page():
     if 'logged_in' in session:
         try:
             session.pop('username', None)
-            session['member_id'] = 0
+            session['organizer_id'] = 0
             session.pop('logged_in', None)
             session.pop('member', None)
+            session['auth_type'] = None
             flash('You have been successfully logged out.', 'success')
 
         except:

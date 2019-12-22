@@ -21,10 +21,10 @@
 		</tr>
 		{% for item in myevents %}
 		<tr>
-			<td>{{item['name']}}</td>
-			<td>{{item['date']}}</td>
-			<td>{{item['type']}}</td>
-			<td>{{item[city]}}</td>
+			<td style="color: cornsilk;">{{item['name']}}</td>
+			<td style="color: cornsilk;">{{item['date']}}</td>
+			<td style="color: cornsilk;">{{item['type']}}</td>
+			<td style="color: cornsilk;">{{item[city]}}</td>
 			{% if session['auth_type'] == "Team leader" %}
 			<td>
 				<form class="form-inline my-2 my-lg-2">

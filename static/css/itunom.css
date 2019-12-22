@@ -121,8 +121,8 @@
   #itunom-nav::after {
     position: absolute;
     content: "";
-    height: 600px;
-    width: 900px;
+    height: 0px
+    width: 0px
     background-image: -webkit-linear-gradient(-220deg, #1d3ede, #01e6f8);
     background-image: -moz-linear-gradient(-220deg, #1d3ede, #01e6f8);
     background-image: -ms-linear-gradient(-220deg, #1d3ede, #01e6f8);
@@ -135,13 +135,13 @@
   }
   @media (max-width: 1400px) {
     #itunom-nav::after {
-      height: 550px;
-      width: 800px;
+      height: 0px;
+      width: 0px
     }
   }
   @media (max-width: 1199px) {
     #itunom-nav::after {
-      width: 700px;
+      width: 0px;
     }
   }
   @media (max-width: 991px) {
@@ -160,8 +160,8 @@
   #itunom-nav::before {
     position: absolute;
     content: "";
-    height: 590px;
-    width: 930px;
+    height: 0px;
+    width: 0px;
     background-image: -webkit-linear-gradient(to right, #e8eefc, #e6fafe);
     background-image: -moz-linear-gradient(to right, #e8eefc, #e6fafe);
     background-image: -ms-linear-gradient(to right, #e8eefc, #e6fafe);

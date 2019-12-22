@@ -9,7 +9,7 @@ from flask import (Blueprint, Flask, abort, flash, redirect, render_template,
 from werkzeug.utils import secure_filename
 
 import requests
-from forms import EditEventForm
+from forms import (EditEventForm, AddEventForm)
 from member_profile import Member
 from queries import run, select, update
 
@@ -77,3 +77,29 @@ def organizer_edit_event_page(id):
 		flash('No organizer privileges...', 'danger')
 		return redirect(url_for('home.home_page'))
 
+@organizer.route("/admin/add/team", methods=['GET', 'POST'])
+def organizer_add_event_page():
+	if(session.get('auth_type') != 'organizer'):
+		flash('No organizer privileges...', 'danger')
+		return redirect(url_for('home.home_page'))
+	else:
+		form = AddEventForm()
+		if (request.method == 'POST' and form.add_event.data or form.validate()):
+			name = form.name.data
+			ticket_url = form.ticket_url.data
+			location = form.location.data
+			city = form.city.data
+			image = form.image.data
+			date = form.date.data
+			e_type = form.e_type.data
+			description = form.description.data
+			
+
+			URL = "https://ituse19-uep.herokuapp.com/api/add_new_event/{}".format(session.get('organizer_id'))
+			PARAMS = {'name': name, 'date': date, 'description': description, 'ticket_url':ticket_url, 'image': image, 'location': location, 'city': city, 'type': e_type}
+			r = requests.post(url=URL,params = PARAMS)
+			data = r.json()
+			print(data)
+
+			return redirect(url_for('organizer.organizer_add_event_page'))
+		return render_template('organizer_add_event_page.html',form=form)
