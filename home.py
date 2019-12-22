@@ -4,7 +4,6 @@ from flask import (Blueprint, Flask, abort, flash, redirect, render_template,
                    request, session, url_for)
 
 from forms import *
-from queries import select
 import requests
 
 

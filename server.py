@@ -10,7 +10,6 @@ from organizer import organizer
 from dbinit import initialize
 from home import home
 from login import login
-from member_profile import member_profile
 from visitor import visitor
 from panel import panel
 
@@ -29,7 +28,6 @@ app.config['SECRET_KEY'] = '9ioJbIGGH6ndzWOi3vEW'
 app.register_blueprint(home)
 app.register_blueprint(organizer)
 app.register_blueprint(login)
-app.register_blueprint(member_profile)
 app.register_blueprint(admin)
 app.register_blueprint(visitor)
 app.register_blueprint(panel)

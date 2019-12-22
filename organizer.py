@@ -10,8 +10,6 @@ from werkzeug.utils import secure_filename
 
 import requests
 from forms import (EditEventForm, AddEventForm)
-from member_profile import Member
-from queries import run, select, update
 
 organizer = Blueprint(name='organizer', import_name=__name__)
 

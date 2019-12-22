@@ -41,12 +41,6 @@
 						<p class="position" style="margin-top: -20px;">{{item['date']}}</p>
 						<p class="city" style="margin-top: -20px;">{{item['city']}}</p>
 					</div>
-					{% if session['member_id'] == 'admin' %}
-						<form class="form-inline my-2 my-lg-2" style="margin-left: 200px;" >
-							<a href="{{ url_for('admin.admin_edit_event_page',id=item['id']) }}"
-								class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Düzenle</a>
-						</form>
-					{% endif %}	
 				</div>
 			</a>	
 		</div>	

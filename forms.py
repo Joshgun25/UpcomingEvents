@@ -9,7 +9,6 @@ from wtforms import (BooleanField, FileField, FloatField, HiddenField,
 from wtforms.fields.html5 import DateField, EmailField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
-from queries import select
 
 auth_type_choices = [('3', 'Team Leader'),
                      ('4', 'Subteam Leader'),

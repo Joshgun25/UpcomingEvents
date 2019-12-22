@@ -5,8 +5,8 @@
 
 <h6 style="font-size: 40px; text-align: center;">Active Organizers</h6>
 
-<div class="table-responsive">
-	<table id="myTable" class = "table table-striped" style='margin-top: 5%; table-layout: auto;'>
+<div class="table-responsive" style="background-color: rgb(100, 0, 0);">
+	<table id="myTable" class = "table table-striped" style='margin-top: 5%; table-layout: auto; color: white; font-size: 20px;'>
 		<tr>
 			<th  onclick="sortTable(0)" style="cursor: pointer;">Name    
 				<img src="../static/images/schedule/order.png" alt="..." style="widows: 15px; height: 15px; align-self: right;">
@@ -17,8 +17,6 @@
 			<th onclick="sortTable(2)" style="cursor: pointer;">Address    
 				<img src="../static/images/schedule/order.png" alt="..." style="widows: 15px; height: 15px; align-self: right;">
 			</th>
-			<th></th>
-			<th></th>
 
 		</tr>
 		{% for item in organizers %}
@@ -26,20 +24,6 @@
 			<td>{{item['name']}}</td>
 			<td>{{item['mail']}}</td>
 			<td>{{item['address']}}</td>
-			{% if session['auth_type'] == "admin" %}
-			<td>
-				<form class="form-inline my-2 my-lg-2">
-					<a href="#"
-						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Edit</a>
-				</form>
-			</td>
-			<td>
-				<form class="form-inline my-2 my-lg-2">
-					<a href="#"
-						class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Delete</a>
-				</form>
-			</td>
-			{% endif %}	
 		</tr>
 		{% endfor %}
 	</table>
